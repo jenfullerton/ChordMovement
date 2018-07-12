@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chord Movement", "Assembly-CSharp-firstpass.csproj", "{2FBBB682-E056-57C0-ADD4-476206AC1A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chord Movement", "Assembly-CSharp.csproj", "{526A4FEF-E264-51D5-1C94-263EE90D503C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chord Movement", "Assembly-CSharp-Editor.csproj", "{AC9F1AFE-964D-DFDB-44ED-5DDDB24C242B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FBBB682-E056-57C0-ADD4-476206AC1A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBBB682-E056-57C0-ADD4-476206AC1A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBBB682-E056-57C0-ADD4-476206AC1A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBBB682-E056-57C0-ADD4-476206AC1A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526A4FEF-E264-51D5-1C94-263EE90D503C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526A4FEF-E264-51D5-1C94-263EE90D503C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526A4FEF-E264-51D5-1C94-263EE90D503C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526A4FEF-E264-51D5-1C94-263EE90D503C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9F1AFE-964D-DFDB-44ED-5DDDB24C242B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9F1AFE-964D-DFDB-44ED-5DDDB24C242B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9F1AFE-964D-DFDB-44ED-5DDDB24C242B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9F1AFE-964D-DFDB-44ED-5DDDB24C242B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
