@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour {
 	// get this Rigidbody
 	private Rigidbody rb;
 
-	// create an instance of IntervalSystem for chords
-	public IntervalSystem isys;
+	// IntervalSystem for chords
+	private IntervalSystem isys;
+
+	// BPM
+	private BPM bpm;
 
 	// speed and angle modifiers
 	public float speed;
@@ -17,9 +20,14 @@ public class PlayerController : MonoBehaviour {
 
 	void Start ()
 	{
-		rb = GetComponent<Rigidbody> ();
-		isys = new IntervalSystem ();
-		isys.IntervalStart ();
+		// physics rigidbody
+			rb = GetComponent<Rigidbody> ();
+		// interval system
+			isys = new IntervalSystem ();
+			isys.IntervalStart ();
+		// beats per minute system
+			bpm = new BPM ();
+			bpm.BpmStart ();
 	}
 		
 
@@ -30,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 		//		BUTTON TESTS
 		// ====================================
 
-
+		/*
 		// top frets
 		if(Input.GetButton ("Green")){ Debug.Log("top green"); }
 		if(Input.GetButton ("Red")){ Debug.Log("top red"); }
@@ -40,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 
 		// lower fret active
 		if (Input.GetButton ("LowerFret")) { Debug.Log ("lower fret"); }
+		*/
 
 
 		// ===================================
@@ -48,12 +57,17 @@ public class PlayerController : MonoBehaviour {
 
 		// if strum is active (-1 or 1), calc interval
 		float currentStrum = Input.GetAxis ("Strum");
-		// Debug.Log (currentStrum);
+		float debugStrum = Input.GetAxis ("Vertical");
+
+		if (currentStrum == 0) {
+			if (debugStrum <= -0.2 || debugStrum >= 0.2)
+				currentStrum = debugStrum;
+		}
 
 		float rotation = 0f;
 
 		// strum check
-		rotation = isys.CheckStrum(currentStrum);
+		rotation = isys.CheckStrum(currentStrum, bpm);
 
 		transform.Rotate (0f, rotation * intervalModifier, 0f);
 		transform.Translate (0, 0, currentStrum * speed);

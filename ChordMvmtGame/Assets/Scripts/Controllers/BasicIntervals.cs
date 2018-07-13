@@ -11,7 +11,6 @@ public class IntervalSystem {
 	private bool reset;
 
 
-
 	public void IntervalStart()
 	{
 		prevStrum = 0f;
@@ -20,11 +19,10 @@ public class IntervalSystem {
 	}
 
 
-
 	// ===========================
 	// 		INTERVALS
 	// ===========================
-	public float CheckStrum(float currentStrum)
+	public float CheckStrum(float currentStrum, BPM bpm)
 	{
 		float returnVal = 0f;
 
@@ -36,8 +34,9 @@ public class IntervalSystem {
 			{
 				// calculate interval, returned to calculate rotation
 				returnVal = (float)Strum ();
+				// adjust bpm
+				bpm.BpmAdjust();
 			}
-
 		}
 
 		// set prevStrum to currentStrum for next check
