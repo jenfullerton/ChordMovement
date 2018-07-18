@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Controllers\BPM.cs" />
-     <Compile Include="Assets\Scripts\Controllers\BasicIntervals.cs" />
      <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ExternalLibraries\LibNoise\Generator\Billow.cs" />
@@ -83,6 +81,9 @@
      <Compile Include="Assets\Scripts\ExternalLibraries\LibNoise\Operator\Turbulence.cs" />
      <Compile Include="Assets\Scripts\ExternalLibraries\LibNoise\Properties\AssemblyInfo.cs" />
      <Compile Include="Assets\Scripts\ExternalLibraries\LibNoise\Utils.cs" />
+     <Compile Include="Assets\Scripts\SoundSystems\BPM.cs" />
+     <Compile Include="Assets\Scripts\SoundSystems\BasicIntervals.cs" />
+     <Compile Include="Assets\Scripts\SoundSystems\NoteTest.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration\PerlinTest.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration\TerrainGenerator.cs" />
      <None Include="Assets\Scripts\ExternalLibraries\LibNoise\COPYING.txt" />

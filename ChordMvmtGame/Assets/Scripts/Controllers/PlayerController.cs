@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 				currentStrum = debugStrum;
 		}
 
+
 		float rotation = 0f;
 
 		// strum check
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = new Vector3(moveHorizontal, jumpAmt, moveVertical);
 		// force mode default through omission
 		rb.AddForce(movement * speed);
-		*/
+
 
 		/*
 		float moveVertical = Input.GetAxis ("Strum");
