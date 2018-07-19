@@ -10,12 +10,15 @@ public class IntervalSystem {
 	// boolean - forces the interval played to be 0 when starting or resetting
 	private bool reset;
 
+	// audio source -- reference to play note
+	private AudioSource noteSource;
 
-	public void IntervalStart()
+	public void IntervalStart(AudioSource audioSource)
 	{
 		prevStrum = 0f;
 		prevInterval = 0;
 		reset = true;
+		noteSource = audioSource;
 	}
 
 
@@ -36,6 +39,11 @@ public class IntervalSystem {
 				returnVal = (float)Strum ();
 				// adjust bpm
 				bpm.BpmAdjust();
+
+				// play audio
+				float tranpose = -4;	// transpose in semitones
+				noteSource.pitch = Mathf.Pow (2, (-returnVal+tranpose)/12f);
+				noteSource.Play ();
 			}
 		}
 

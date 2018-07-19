@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NoteTest : MonoBehaviour {
+/*
+// need to inherit from MonoBehavio to run
+public class NoteTest {
 	// stolen directly from aldonaletto
 	// < https://answers.unity.com/questions/141771/whats-a-good-way-to-do-dynamically-generated-music.html?points=1 >
 
@@ -13,8 +15,10 @@ public class NoteTest : MonoBehaviour {
 	float tranpose = -4;	// transpose in semitones
 	// i know exactly what the fuck i'm doing
 
-	void Update () {
+	void Update() 
+	{
 		
+
 		float note = -1f;
 
 		if (Input.GetKeyDown("a")) note = 0f;  // C
@@ -27,19 +31,16 @@ public class NoteTest : MonoBehaviour {
 		if (Input.GetKeyDown("k")) note = 12f; // C
 		if (Input.GetKeyDown("l")) note = 14f; // D
 
-		// if something is pressed
-		if (note >= 0)
-		{ 
-			// I. DON'T. KNOW. HOW. THIS. WORKS. OR. WHAT. IT.
-			//	MEANS. BUT. IT. WORKS.   B I T C H !
-			musicSource.pitch = Mathf.Pow (2, (note+tranpose)/12f);
-			musicSource.Play ();
-		}
 
-		/*
+			musicSource.pitch = Mathf.Pow (2, (interval+tranpose)/12f);
+			musicSource.Play ();
+
+
+
 		// test
 		if (Input.GetKeyDown (KeyCode.Space))
 			musicSource.Play ();
-		*/
+		
 	}
 }
+*/
