@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour {
 	// get this Rigidbody
 	private Rigidbody rb;
 
-	// audio
-	AudioSource audioSource;
+	// audio manager
+	public AudioManager AM;
 
 	// IntervalSystem for chords
 	private IntervalSystem isys;
@@ -19,21 +19,21 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float intervalModifier;
 
+	public bool keyboardDebug;
+
 
 
 	void Start ()
 	{
 		// physics rigidbody
-			rb = GetComponent<Rigidbody> ();
-		// get AudioSource Component
-			audioSource = GetComponent<AudioSource> ();
+		rb = GetComponent<Rigidbody> ();
 
 		// interval system
-			isys = new IntervalSystem ();
-			isys.IntervalStart (audioSource);
+		isys = new IntervalSystem ();
+		isys.IntervalStart (AM);
 		// beats per minute system
-			bpm = new BPM ();
-			bpm.BpmStart ();
+		bpm = new BPM ();
+		bpm.BpmStart ();
 	}
 		
 
@@ -65,12 +65,13 @@ public class PlayerController : MonoBehaviour {
 		float currentStrum = Input.GetAxis ("Strum");
 		float debugStrum = Input.GetAxis ("Vertical");
 
-		/*
-		if (currentStrum == 0) {
-			if (debugStrum <= -0.2 || debugStrum >= 0.2)
-				currentStrum = debugStrum;
+		if(keyboardDebug)
+		{
+			if (currentStrum == 0) {
+				if (debugStrum <= -0.2 || debugStrum >= 0.2)
+					currentStrum = debugStrum;
+			}
 		}
-		*/
 
 
 		float rotation = 0f;

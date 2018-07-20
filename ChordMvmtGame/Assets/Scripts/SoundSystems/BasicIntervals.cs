@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class IntervalSystem {
 
@@ -11,14 +12,15 @@ public class IntervalSystem {
 	private bool reset;
 
 	// audio source -- reference to play note
-	private AudioSource noteSource;
+	private AudioManager AM;
 
-	public void IntervalStart(AudioSource audioSource)
+	public void IntervalStart(AudioManager audioManager)
 	{
+		
 		prevStrum = 0f;
 		prevInterval = 0;
 		reset = true;
-		noteSource = audioSource;
+		AM = audioManager;
 	}
 
 
@@ -40,10 +42,11 @@ public class IntervalSystem {
 				// adjust bpm
 				bpm.BpmAdjust();
 
-				// play audio
+
 				float tranpose = -4;	// transpose in semitones
-				noteSource.pitch = Mathf.Pow (2, (-returnVal+tranpose)/12f);
-				noteSource.Play ();
+				float notePitch = Mathf.Pow (2, (-returnVal+tranpose)/12f);
+
+				AM.Play ("Note", notePitch);
 			}
 		}
 

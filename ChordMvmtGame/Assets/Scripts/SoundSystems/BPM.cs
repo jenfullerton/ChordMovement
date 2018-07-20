@@ -23,6 +23,6 @@ public class BPM {
 		beatsPerSecond = totalBeats / Time.realtimeSinceStartup;
 
 		// display new BPM
-		this.BpmLog();
+		//this.BpmLog();
 	}
 }
