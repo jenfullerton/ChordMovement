@@ -84,10 +84,10 @@
      <Compile Include="Assets\Scripts\SoundSystems\AudioManager.cs" />
      <Compile Include="Assets\Scripts\SoundSystems\BPM.cs" />
      <Compile Include="Assets\Scripts\SoundSystems\BasicIntervals.cs" />
-     <Compile Include="Assets\Scripts\SoundSystems\NoteTest.cs" />
      <Compile Include="Assets\Scripts\SoundSystems\Sound.cs" />
-     <Compile Include="Assets\Scripts\TerrainGeneration\PerlinTest.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration\TerrainGenerator.cs" />
+     <Compile Include="Assets\Scripts\Tests_notUsing\NoteTest.cs" />
+     <Compile Include="Assets\Scripts\Tests_notUsing\PerlinTest.cs" />
      <None Include="Assets\Scripts\ExternalLibraries\LibNoise\COPYING.txt" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Scripts\ExternalLibraries\LibNoise\COPYING.LESSER.txt" />

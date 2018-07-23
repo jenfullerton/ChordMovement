@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class IntervalSystem {
 
+	// === STRUM SETTINGS === //
 	// float for determining if strum is a new strum
 	private float prevStrum;
 	// previous interval played (notes only, will become chords later)
@@ -11,7 +12,11 @@ public class IntervalSystem {
 	// boolean - forces the interval played to be 0 when starting or resetting
 	private bool reset;
 
-	// audio source -- reference to play note
+	// === PITCH AND SOUND SETTINGS === //
+	private float pitchInHalfSteps;
+
+	// === GAMEOBJECT REFERENCES === //
+	// AudioManager -- used to actually play sounds
 	private AudioManager AM;
 
 	public void IntervalStart(AudioManager audioManager)
@@ -20,6 +25,7 @@ public class IntervalSystem {
 		prevStrum = 0f;
 		prevInterval = 0;
 		reset = true;
+		pitchInHalfSteps = 0f;
 		AM = audioManager;
 	}
 
@@ -29,7 +35,7 @@ public class IntervalSystem {
 	// ===========================
 	public float CheckStrum(float currentStrum, BPM bpm)
 	{
-		float returnVal = 0f;
+		float currentInterval = 0f;
 
 		// if strum button was previously at rest
 		if (prevStrum == 0) {
@@ -38,22 +44,25 @@ public class IntervalSystem {
 			if (currentStrum > 0 )
 			{
 				// calculate interval, returned to calculate rotation
-				returnVal = (float)Strum ();
+				currentInterval = (float)Strum ();
 				// adjust bpm
 				bpm.BpmAdjust();
 
+				int semitones = ConvertIntervalToHalfStep ((int)currentInterval);
 
-				float tranpose = -4;	// transpose in semitones
-				float notePitch = Mathf.Pow (2, (-returnVal+tranpose)/12f);
+				pitchInHalfSteps += (float)semitones;
 
-				AM.Play ("Note", notePitch);
+				float transpose = -4;
+				float pitch = Mathf.Pow (2, (-pitchInHalfSteps+transpose)/12f);
+
+				AM.Play ("Note", pitch);
 			}
 		}
 
 		// set prevStrum to currentStrum for next check
 		prevStrum = currentStrum;
 
-		return returnVal;
+		return currentInterval;
 	}
 
 
@@ -109,4 +118,35 @@ public class IntervalSystem {
 		return current - previous;
 	}
 
+	int ConvertIntervalToHalfStep(int interval)
+	{
+		int halfSteps = 0;
+
+		switch(interval)
+		{
+			case 0:	// unison/p1, 0^
+				halfSteps = 0;
+				break;
+			case 1:	// M2, 2^
+				halfSteps = 2;
+				break;
+			case 2:	// M3, 4^
+				halfSteps = 4;
+				break;
+			case 3:	// P5, 7^
+				halfSteps = 7;
+				break;
+			case 4:	// M6, 9^
+				halfSteps = 9;
+				break;
+			case 5: // octave/p8, 12^
+				halfSteps = 12;
+				break;
+			default:
+				halfSteps = interval;
+				break;
+		}
+
+		return halfSteps;
+	}
 }
