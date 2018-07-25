@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\SoundSystems\BPM.cs" />
      <Compile Include="Assets\Scripts\SoundSystems\BasicIntervals.cs" />
      <Compile Include="Assets\Scripts\SoundSystems\Sound.cs" />
+     <Compile Include="Assets\Scripts\SoundSystems\TonicScale.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration\TerrainGenerator.cs" />
      <Compile Include="Assets\Scripts\Tests_notUsing\NoteTest.cs" />
      <Compile Include="Assets\Scripts\Tests_notUsing\PerlinTest.cs" />

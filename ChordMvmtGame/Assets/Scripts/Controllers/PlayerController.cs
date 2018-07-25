@@ -34,6 +34,29 @@ public class PlayerController : MonoBehaviour {
 		// beats per minute system
 		bpm = new BPM ();
 		bpm.BpmStart ();
+
+		/*
+		 * // TEST TONIC SCALE
+		TonicScale ts = new TonicScale(5);
+
+		Debug.Log ("ts stage " + 0 + " = " + ts.CalculatePitchInterval (0));
+		 * 
+		for (int i = 1; i <= 5; i++) {
+			Debug.Log ("ts stage " + i + " = " + ts.CalculatePitchInterval (1));
+		}
+
+		for (int i = 5; i >= 0; i--) {
+			Debug.Log ("ts stage " + i + " = " + ts.CalculatePitchInterval (-1));
+		}
+		*/
+
+		/*
+		Debug.Log ("ts stage " + (-3) + " = " + ts.CalculatePitchInterval (-3));
+		Debug.Log ("ts stage " + (-3) + " = " + ts.CalculatePitchInterval (-3));
+		Debug.Log ("ts stage " + (-4) + " = " + ts.CalculatePitchInterval (-4));
+		Debug.Log ("ts stage " + (-5) + " = " + ts.CalculatePitchInterval (-5));
+		Debug.Log ("ts stage " + (+1) + " = " + ts.CalculatePitchInterval (1));
+		*/
 	}
 		
 

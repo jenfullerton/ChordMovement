@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class IntervalSystem {
 
@@ -13,11 +12,14 @@ public class IntervalSystem {
 	private bool reset;
 
 	// === PITCH AND SOUND SETTINGS === //
-	private float pitchInHalfSteps;
 
-	// === GAMEOBJECT REFERENCES === //
+	// === OBJECT REFERENCES === //
 	// AudioManager -- used to actually play sounds
 	private AudioManager AM;
+
+	// TonicScale -- used to handle maintaining a pitch
+	//	in a specific scale tonic (e.g. pentatonic)
+	private TonicScale TS;
 
 	public void IntervalStart(AudioManager audioManager)
 	{
@@ -25,8 +27,8 @@ public class IntervalSystem {
 		prevStrum = 0f;
 		prevInterval = 0;
 		reset = true;
-		pitchInHalfSteps = 0f;
 		AM = audioManager;
+		TS = new TonicScale (5);
 	}
 
 
@@ -48,12 +50,9 @@ public class IntervalSystem {
 				// adjust bpm
 				bpm.BpmAdjust();
 
-				int semitones = ConvertIntervalToHalfStep ((int)currentInterval);
 
-				pitchInHalfSteps += (float)semitones;
-
-				float transpose = -4;
-				float pitch = Mathf.Pow (2, (-pitchInHalfSteps+transpose)/12f);
+				// int semitones = TS.CalculatePitchInterval ((int)currentInterval);
+				float pitch = TS.CalculatePitch((int)currentInterval);
 
 				AM.Play ("Note", pitch);
 			}
@@ -118,6 +117,7 @@ public class IntervalSystem {
 		return current - previous;
 	}
 
+	/*
 	int ConvertIntervalToHalfStep(int interval)
 	{
 		int halfSteps = 0;
@@ -149,4 +149,5 @@ public class IntervalSystem {
 
 		return halfSteps;
 	}
+	*/
 }
