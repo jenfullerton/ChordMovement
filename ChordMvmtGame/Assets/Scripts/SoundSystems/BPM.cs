@@ -25,4 +25,9 @@ public class BPM {
 		// display new BPM
 		//this.BpmLog();
 	}
+
+	public float GetBpm()
+	{
+		return beatsPerSecond * 60;
+	}
 }

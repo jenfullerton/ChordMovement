@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
 	// get this Rigidbody
 	private Rigidbody rb;
+
+	// debugging UI
+	public Text myText;
+	private string intervalStr;
 
 	// audio manager
 	public AudioManager AM;
@@ -34,6 +39,9 @@ public class PlayerController : MonoBehaviour {
 		// beats per minute system
 		bpm = new BPM ();
 		bpm.BpmStart ();
+
+		intervalStr = "0";
+		myText.text = intervalStr;
 
 		/*
 		 * // TEST TONIC SCALE
@@ -102,6 +110,13 @@ public class PlayerController : MonoBehaviour {
 		// strum check
 		rotation = isys.CheckStrum(currentStrum, bpm);
 
+		// i literally don't understand CS but this works now
+		// DEBUGGING UI
+		intervalStr = ("current interval: " + isys.GetCurrentRelativeInterval ());
+		intervalStr += ("\nbpm: " + bpm.GetBpm ());
+		myText.text = (intervalStr);
+
+		// MOVEMENT
 		transform.Rotate (0f, rotation * intervalModifier, 0f);
 		transform.Translate (0, 0, currentStrum * speed);
 

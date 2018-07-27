@@ -8,6 +8,8 @@ public class IntervalSystem {
 	private float prevStrum;
 	// previous interval played (notes only, will become chords later)
 	private int prevInterval;
+	// current interval relative to last
+	private int currentRelativeInterval;
 	// boolean - forces the interval played to be 0 when starting or resetting
 	private bool reset;
 
@@ -86,6 +88,7 @@ public class IntervalSystem {
 		int thisInterval = CalculateInterval (prevInterval, current);
 		prevInterval = current;
 		Debug.Log ("current interval: " + thisInterval);
+		currentRelativeInterval = thisInterval;
 		return thisInterval;
 	}
 
@@ -117,37 +120,8 @@ public class IntervalSystem {
 		return current - previous;
 	}
 
-	/*
-	int ConvertIntervalToHalfStep(int interval)
+	public int GetCurrentRelativeInterval()
 	{
-		int halfSteps = 0;
-
-		switch(interval)
-		{
-			case 0:	// unison/p1, 0^
-				halfSteps = 0;
-				break;
-			case 1:	// M2, 2^
-				halfSteps = 2;
-				break;
-			case 2:	// M3, 4^
-				halfSteps = 4;
-				break;
-			case 3:	// P5, 7^
-				halfSteps = 7;
-				break;
-			case 4:	// M6, 9^
-				halfSteps = 9;
-				break;
-			case 5: // octave/p8, 12^
-				halfSteps = 12;
-				break;
-			default:
-				halfSteps = interval;
-				break;
-		}
-
-		return halfSteps;
+		return currentRelativeInterval;
 	}
-	*/
 }
