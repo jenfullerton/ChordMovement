@@ -99,8 +99,34 @@ public class TonicScale {
 		int semitones = CalculatePitchInterval (interval);
 
 		// float transpose = -4f;
-		float pitch = Mathf.Pow (2, (-(float)semitones)/12f);
+		float pitch = Mathf.Pow (2, ((float)semitones)/12f);
 
 		return pitch;
+	}
+
+	private void TestTonic()
+	{
+		/*
+		 * // TEST TONIC SCALE
+		TonicScale ts = new TonicScale(5);
+
+		Debug.Log ("ts stage " + 0 + " = " + ts.CalculatePitchInterval (0));
+		* 
+		for (int i = 1; i <= 5; i++) {
+			Debug.Log ("ts stage " + i + " = " + ts.CalculatePitchInterval (1));
+		}
+
+		for (int i = 5; i >= 0; i--) {
+			Debug.Log ("ts stage " + i + " = " + ts.CalculatePitchInterval (-1));
+		}
+		*/
+
+		/*
+		Debug.Log ("ts stage " + (-3) + " = " + ts.CalculatePitchInterval (-3));
+		Debug.Log ("ts stage " + (-3) + " = " + ts.CalculatePitchInterval (-3));
+		Debug.Log ("ts stage " + (-4) + " = " + ts.CalculatePitchInterval (-4));
+		Debug.Log ("ts stage " + (-5) + " = " + ts.CalculatePitchInterval (-5));
+		Debug.Log ("ts stage " + (+1) + " = " + ts.CalculatePitchInterval (1));
+		*/
 	}
 }

@@ -7,27 +7,25 @@ public class IntervalSystem {
 	// float for determining if strum is a new strum
 	private float prevStrum;
 	// previous interval played (notes only, will become chords later)
-	private int prevInterval;
+	private int prevNoteButton;
 	// current interval relative to last
 	private int currentRelativeInterval;
 	// boolean - forces the interval played to be 0 when starting or resetting
 	private bool reset;
 
-	// === PITCH AND SOUND SETTINGS === //
-
 	// === OBJECT REFERENCES === //
 	// AudioManager -- used to actually play sounds
 	private AudioManager AM;
-
 	// TonicScale -- used to handle maintaining a pitch
 	//	in a specific scale tonic (e.g. pentatonic)
 	private TonicScale TS;
 
-	public void IntervalStart(AudioManager audioManager)
+
+	// === CONSTRUCTOR === //
+	public IntervalSystem(AudioManager audioManager)
 	{
-		
 		prevStrum = 0f;
-		prevInterval = 0;
+		prevNoteButton = 0;
 		reset = true;
 		AM = audioManager;
 		TS = new TonicScale (5);
@@ -43,7 +41,6 @@ public class IntervalSystem {
 
 		// if strum button was previously at rest
 		if (prevStrum == 0) {
-
 			// if currently the strum button is being pressed down
 			if (currentStrum > 0 )
 			{
@@ -51,11 +48,8 @@ public class IntervalSystem {
 				currentInterval = (float)Strum ();
 				// adjust bpm
 				bpm.BpmAdjust();
-
-
-				// int semitones = TS.CalculatePitchInterval ((int)currentInterval);
+				// play note
 				float pitch = TS.CalculatePitch((int)currentInterval);
-
 				AM.Play ("Note", pitch);
 			}
 		}
@@ -77,7 +71,7 @@ public class IntervalSystem {
 		//			i.e., no rotation
 		if (reset)
 		{
-			prevInterval = current;
+			prevNoteButton = current;
 
 			// if reset is active, but there are actual notes
 			//	turn off reset
@@ -85,9 +79,8 @@ public class IntervalSystem {
 				reset = false;
 		}
 
-		int thisInterval = CalculateInterval (prevInterval, current);
-		prevInterval = current;
-		Debug.Log ("current interval: " + thisInterval);
+		int thisInterval = CalculateInterval (prevNoteButton, current);
+		prevNoteButton = current;
 		currentRelativeInterval = thisInterval;
 		return thisInterval;
 	}
